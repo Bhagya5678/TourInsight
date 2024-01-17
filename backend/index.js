@@ -18,10 +18,13 @@ res.header(
 );
 next();
 });
-
+// Socket.io
 
 app.use(cors());
 app.use(express.json())
+app.get("/api",(req,res)=>{
+res.status(200).json("Got it");
+})
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
