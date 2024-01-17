@@ -1,8 +1,10 @@
 import React, { useState } from 'react'
 import Button from '../components/Button';
+import { useGlobalContext } from '../Context';
 function SignUp({
     isSignedinvar
 }) { 
+    const{user,setUserInfo,setAuthInfo}=useGlobalContext();
   const [isSignedin,setisSignedin]=useState(isSignedinvar);
   const [data,setData]=useState({
     ...(!isSignedin && {
@@ -28,11 +30,14 @@ function SignUp({
     });
     const json = await response.json()
     if(json.success){
-        console.log("sujal chordia")
       localStorage.setItem("userEmail",data.email)
       localStorage.setItem("authToken",json.authToken)
-      const datareceived=json.data
-      console.log(datareceived)
+      setUserInfo({
+        ...user,
+        name:json.data.name,
+        email:json.data.email,
+        _id:json.data._id,
+    });
     }else{
       console.log("try again");
     }
@@ -46,6 +51,7 @@ const handleSignupSubmit=async(e)=>{
           'Content-Type':"application/json",
       },
       body:JSON.stringify({
+        ...user,
           name:data.name,
           email:data.email,
           password:data.password
@@ -53,9 +59,13 @@ const handleSignupSubmit=async(e)=>{
   });
   const json = await response.json()
   if(json.success){
-    console.log("sujal chordia")
     localStorage.setItem("userEmail",data.email)
     localStorage.setItem("authToken",json.authToken)
+    setUserInfo({
+        name:json.data.name,
+        email:json.data.email,
+        _id:json.data._id,
+    });
   }
 }
   return (
