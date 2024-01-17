@@ -1,39 +1,54 @@
-import React from 'react';
+import React, { useState } from "react";
 
 const Navbar = () => {
+  const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const toggleMobileMenu = () => {
+    setMobileMenuOpen(!isMobileMenuOpen);
+  };
+
   return (
-    <nav className="bg-medium-blue p-4">
-      <div className="container mx-auto flex items-center justify-between">
-        <div className="flex items-center">
-          {/* Logo */}``
-          <img src="/path/to/your-logo.png" alt="Logo" className="w-8 h-8 mr-2" />
-          <span className="text-white text-lg font-bold">Your Website</span>
-        </div>
-
-        <div className="flex items-center">
-          {/* Login/Signup */}
-          <div className="text-medium-blue mr-4">
-            <span className="text-white">Login/Signup</span>
-            {/* You can replace the icon with your own */}
-            <i className="fa fa-user ml-2"></i>
-          </div>
-
-          {/* Dropdown Menu */}
-          <div className="relative group">
-            <div className="bg-white text-medium-blue p-2 cursor-pointer">
-              {/* Three Lines Icon (representing a dropdown menu) */}
-              <span className="block h-2 w-6 border-b border-medium-blue mb-1"></span>
-              <span className="block h-2 w-6 border-b border-medium-blue mb-1"></span>
-              <span className="block h-2 w-6 border-b border-medium-blue"></span>
-            </div>
-
-            {/* Dropdown Content */}
-            <div className="hidden absolute top-10 right-0 bg-white text-medium-blue p-2">
-              <a href="#" className="block py-1">Menu Item 1</a>
-              <a href="#" className="block py-1">Menu Item 2</a>
-              <a href="#" className="block py-1">Menu Item 3</a>
-            </div>
-          </div>
+    <nav className="bg-medium-blue">
+      <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+        {/* logo */}
+        <a href="https://flowbite.com/" className="flex items-center space-x-3 rtl:space-x-reverse">
+          <img src="https://flowbite.com/docs/images/logo.svg" className="h-8" alt="Flowbite Logo" />
+          <span className="text-bg-white self-center text-2xl font-semibold whitespace-nowrap">Flowbite</span>
+        </a>
+        <button
+          data-collapse-toggle="navbar-default"
+          type="button"
+          className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+          aria-controls="navbar-default"
+          aria-expanded={isMobileMenuOpen ? 'true' : 'false'}
+          onClick={toggleMobileMenu}
+        >
+          <span className="sr-only">Open main menu</span>
+          <svg
+            className="w-5 h-5"
+            aria-hidden="true"
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 17 14"
+          >
+            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M1 1h15M1 7h15M1 13h15"/>
+          </svg>
+        </button>
+        <div className={`hidden w-full md:block md:w-auto ${isMobileMenuOpen ? 'block' : 'hidden'}`} id="navbar-default">
+          <ul className="font-medium flex flex-col p-4 md:p-0 mt-4 border rounded-lg md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+            <li>
+              <a href="#" className="block py-2 px-3 text-bg-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-dark-blue md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">About</a>
+            </li>
+            <li>
+              <a href="#" className="block py-2 px-3 text-bg-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-dark-blue md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Services</a>
+            </li>
+            <li>
+              <a href="#" className="block py-2 px-3 text-bg-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-dark-blue md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Pricing</a>
+            </li>
+            <li>
+              <a href="#" className="block py-2 px-3 text-bg-white rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-dark-blue md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact</a>
+            </li>
+          </ul>
         </div>
       </div>
     </nav>
