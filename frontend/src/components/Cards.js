@@ -1,61 +1,64 @@
 import React from 'react';
-import reslogo from '../images/restuarant.jpg'
-import hotel from '../images/hotel.png'
-import shopping from '../images/shopping.jpg'
-import tourist from '../images/tourist.jpg'
-import transport from '../images/transport2.jpg'
+import { useNavigate } from 'react-router-dom';
+import reslogo from '../images/restuarant.jpg';
+import hotel from '../images/hotel.png';
+import shopping from '../images/shopping.jpg';
+import tourist from '../images/tourist.jpg';
+import transport from '../images/transport2.jpg';
+
 function Cards() {
-    //<span className="text-medium-blue font-bold transition-all duration-300 hover:text-lg">{city}</span>
+  const navigate = useNavigate();
+
+  const navigateToCategory = (category) => {
+    navigate(`/category/${category}`);
+  };
+
   return (
     <>
-<div className="flex flex-wrap justify-center align-center max-w-[85rem]  ml-20 mt-40">
-      <div className="w-full md:w-1/6 p-4">
-        <div className="max-w-xs mx-auto bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:text-lg">
-          <img className="h-48 w-full object-cover object-center" src={hotel}/>
-          <div className="p-6">
-          <div className="uppercase text-base text-navy-blue font-bold">Accommodation</div>
+      <div className="flex flex-wrap">
+        <div className="w-full md:w-1/5 p-2" onClick={() => navigateToCategory('accommodation')}>
+          <div className="max-w-xs mx-auto bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:text-lg">
+            <img className="h-48 w-full object-cover object-center" src={hotel} alt="Accommodation" />
+            <div className="p-6">
+              <div className="uppercase text-base text-navy-blue font-bold">Accommodation</div>
+            </div>
           </div>
         </div>
+        <div className="w-full md:w-1/5 p-2" onClick={() => navigateToCategory('restaurant')}>
+          <div className="max-w-xs mx-auto bg-white rounded-xl shadow-md overflow-hidden">
+            <img className="h-48 w-full object-cover object-center" src={reslogo} alt="Restaurants" />
+            <div className="p-6">
+              <div className="uppercase text-base text-navy-blue font-bold pl-4">Restaurants</div>
+            </div>
+          </div>
+        </div>
+        <div className="w-full md:w-1/5 p-2" onClick={() => navigateToCategory('shopping')}>
+          <div className="max-w-xs mx-auto bg-white rounded-xl shadow-md overflow-hidden">
+            <img className="h-48 w-full object-cover object-center" src={shopping} alt="Restaurants" />
+            <div className="p-6">
+              <div className="uppercase text-base text-navy-blue font-bold pl-4">Shopping</div>
+            </div>
+          </div>
+        </div>
+        <div className="w-full md:w-1/5 p-2" onClick={() => navigateToCategory('touristattraction')}>
+          <div className="max-w-xs mx-auto bg-white rounded-xl shadow-md overflow-hidden">
+            <img className="h-48 w-full object-cover object-center" src={tourist} alt="Restaurants" />
+            <div className="p-6">
+              <div className="uppercase text-base text-navy-blue font-bold pl-4">Tourist Attraction</div>
+            </div>
+          </div>
+        </div>
+         <div className="w-full md:w-1/5 p-2" onClick={() => navigateToCategory('transportation')}>
+          <div className="max-w-xs mx-auto bg-white rounded-xl shadow-md overflow-hidden">
+            <img className="h-48 w-full object-cover object-center" src={transport} alt="Restaurants" />
+            <div className="p-6">
+              <div className="uppercase text-base text-navy-blue font-bold pl-4">Transportation</div>
+            </div>
+          </div>
+        </div>
+        {/* Repeat similar structure for other categories */}
       </div>
-      <div className="w-full md:w-1/6 p-4">
-        <div className="max-w-xs mx-auto bg-white rounded-xl shadow-md overflow-hidden">
-          <img className="h-48 w-full object-cover object-center" src={reslogo} alt="Man looking at item at a store"/>
-          <div className="p-6">
-            <div className="uppercase text-base text-navy-blue font-bold pl-4">Restaurants</div>
-          </div>
-        </div>
-      </div>
-      <div className="w-full md:w-1/6 p-4">
-        <div className="max-w-xs mx-auto bg-white rounded-xl shadow-md overflow-hidden">
-          <img className="h-48 w-full object-cover object-center" src={reslogo} alt="Man looking at item at a store"/>
-          <div className="p-6">
-            <div className="uppercase text-base text-navy-blue font-bold pl-5">Restaurants</div>
-          </div>
-        </div>
-      </div><div className="w-full md:w-1/6 p-4">
-        <div className="max-w-xs mx-auto bg-white rounded-xl shadow-md overflow-hidden">
-          <img className="h-48 w-full object-cover object-center" src={transport} alt="Man looking at item at a store"/>
-          <div className="p-6">
-            <div className="uppercase text-base text-navy-blue font-bold pl-5">Transport</div>
-          </div>
-        </div>
-      </div><div className="w-full md:w-1/6 p-4">
-        <div className="max-w-xs mx-auto bg-white rounded-xl shadow-md overflow-hidden">
-          <img className="h-48 w-full object-cover object-center" src={shopping} alt="Man looking at item at a store"/>
-          <div className="p-6">
-            <div className="uppercase text-base text-navy-blue font-bold pl-8">Shopping</div>
-          </div>
-        </div>
-      </div><div className="w-full md:w-1/6 p-4">
-        <div className="max-w-xs mx-auto bg-white rounded-xl shadow-md overflow-hidden">
-          <img className="h-48 w-full object-cover object-center" src={tourist} alt="Man looking at item at a store"/>
-          <div className="p-6">
-            <div className="uppercase text-base text-navy-blue font-bold pl-3">Tourist Places</div>
-          </div>
-        </div>
-      </div>
-      </div>
-  </>
+    </>
   );
 }
 
