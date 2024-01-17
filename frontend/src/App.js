@@ -1,10 +1,11 @@
 import Navbar from "./components/Navbar"
 import './App.css';
+import SignUp from "./pages/Signup";
 
 function App() {
   return (
     <div className="App">
-      <Navbar/>
+      <SignUp isSignedinvar={false}/>
     </div>
   );
 }
