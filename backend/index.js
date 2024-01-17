@@ -25,6 +25,8 @@ app.use(express.json())
 app.get("/api",(req,res)=>{
 res.status(200).json("Got it");
 })
+app.use("/api",require("./routes/createuserroutes"));
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })
