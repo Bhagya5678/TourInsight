@@ -12,7 +12,7 @@ import { AppProvider } from "./Context";
 import ProductFullscreen from './ProductFullscreen';
 import Cards from "./components/Cards";
 import TransportationList from "./category/Transportation";
-import Restaurant from "./category/RestaurantList"
+// import Restaurant from "./category/RestaurantList"
 import RestaurantList from "./category/RestaurantList";
 function App() {
   return (
@@ -23,9 +23,8 @@ function App() {
         <Route exact path="/" element={<SignUp isSignedinvar={false} />}/>
         <Route exact path="/category" element={<Cards/>}/>
         <Route exact path="/category/transportation" element={<TransportationList/>}/>
-        <Route exact path="/category/restaurant" element={<RestaurantList/>}/>
         <Route exact path="/category/transportation/:id" element={<ProductFullscreen/>}/>
-        <Route exact path="/category/restaurant" element={<Restaurant />}/>
+   
       </Routes>
     </Router>
     </React.StrictMode>
