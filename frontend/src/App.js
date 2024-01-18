@@ -18,8 +18,8 @@ import RestaurantFullScreen from "./RestaurantCard";
 function App() {
   return (
     <div>
-      <Navbar />
- <React.StrictMode>
+      <ProductFullscreen data={data} />
+    <React.StrictMode>
     <Router>
       <Routes>
         <Route exact path="/" element={<SignUp isSignedinvar={false} />}/>
