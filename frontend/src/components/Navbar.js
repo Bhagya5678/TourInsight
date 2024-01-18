@@ -1,14 +1,19 @@
 import React, { useState } from "react";
-import logoImg from "../images/logo.png"
+import logoImg from "../images/logo.png";
+import WeatherCard from "./WeatherCard";
 const Navbar = () => {
   const [isMobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [weatherWidget, setWeatherWidget] = useState(false);
 
+  function toggleWeather() {
+    setWeatherWidget(!weatherWidget);
+  }
   const toggleMobileMenu = () => {
     setMobileMenuOpen(!isMobileMenuOpen);
   };
 
-  return (
-    <nav className="bg-dark-blue">
+  return (<>
+    <nav className="bg-dark-blue relative">
       <div className="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-1">
         {/* logo */}
         <a href="#" className="flex items-center space-x-3 rtl:space-x-reverse">
@@ -40,18 +45,21 @@ const Navbar = () => {
               <a href="#" className="block py-2 px-3 text-bg-white text-lg rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0">About</a>
             </li>
             <li>
-              <a href="#" className="block py-2 px-3 text-bg-white text-lg rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0">Services</a>
+              <a href="#" className="block py-2 px-3 text-bg-white text-lg rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-dark-blue md:p-0 dark:text-white md:dark:hover:text-blue-500">Services</a>
             </li>
             <li>
-              <a href="#" className="block py-2 px-3 text-bg-white text-lg rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0">Pricing</a>
+              <a href="#" className="block py-2 px-3 text-bg-white text-lg rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-dark-blue md:p-0 dark:text-white md:dark:hover:text-blue-500">Pricing</a>
             </li>
             <li>
-              <a href="#" className="block py-2 px-3 text-bg-white text-lg rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0">Contact</a>
+              <a href="#" className="block py-2 px-3 text-bg-white text-lg rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-dark-blue md:p-0 dark:text-white md:dark:hover:text-blue-500">Contact</a>
             </li>
           </ul>
         </div>
       </div>
+      <div className="z-10 absolute end-0 border-solid border-2 border-dark-blue mr-10 rounded-3xl">{weatherWidget ? <WeatherCard /> : null}</div>
     </nav>
+    
+    </>
   );
 };
 
