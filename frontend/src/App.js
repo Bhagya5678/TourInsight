@@ -10,6 +10,7 @@ import {
 } from 'react-router-dom'
 import { AppProvider } from "./Context";
 import ProductFullscreen from './ProductFullscreen';
+import Searchbar from "./components/Searchbar";
 
 const data = {
   id: '1-18',
@@ -30,7 +31,9 @@ const data = {
 function App() {
   return (
     <div>
-      <ProductFullscreen data={data} />
+      <Navbar />
+      <Searchbar/>
+    
     {/* <React.StrictMode>
     <Router>
       <Routes>

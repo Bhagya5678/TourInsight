@@ -9,7 +9,7 @@ const ProductFullscreen = ({ data }) => {
     <div className="flex flex-row h-screen">
       {/* Carousel - 2/3 of the screen */}
       <div className="w-2/3 flex-1">
-        <CarouselDef images={images} height="75%" />
+        <CarouselDef images={images} />
         {/* Additional Information below the carousel */}
         <div className="p-4 text-center bg-gray-200">
           <p>{info}</p>

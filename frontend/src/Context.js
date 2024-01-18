@@ -10,7 +10,7 @@ const AppProvider = ({ children }) => {
   const [endDate, setEndDate] = useState('');
 
   useEffect(()=>{
-    console.log(user);
+    // console.log(user);
   },[user])
   const setUserInfo = (userInfo) => {
     setUser(userInfo);
