@@ -1,5 +1,5 @@
 const express=require("express");
-const Users = require("../models/User");
+const Vendors=require("../models/Vendors")
 const router=express.Router();
 const { body, validationResult } = require('express-validator');
 const jwt= require("jsonwebtoken")
@@ -9,7 +9,7 @@ const bcrypt= require("bcryptjs")
 
 
 
-router.post("/createuser",[
+router.post("/createvendor",[
     body('email').isEmail(),
     body('password',"Incorrect Password").isLength({ min: 5 }),
     body('name').isLength({ min: 5 })],
@@ -22,21 +22,21 @@ router.post("/createuser",[
         const salt=await bcrypt.genSalt(10);
         let securedPassword= await bcrypt.hash(req.body.password,salt)
         try{
-            const newUsers=await Users.create({
+            const newVendors=await Vendors.create({
                 name: req.body.name,
                 email: req.body.email,
                 password: securedPassword,
             })
             const data={
                 user:{
-                    id:newUsers._id,
+                    id:newVendors._id,
                 }
             }
             const authToken=jwt.sign(data,JWTSECRET)
             res.json({success:true,authToken:authToken,data:{
                 name: req.body.name,
                 email: req.body.email,
-                _id:newUsers._id}})
+                _id:newVendors._id}})
         }catch(err){
             console.log(err)
             res.json({
@@ -45,23 +45,9 @@ router.post("/createuser",[
         }
     })
 
-    router.get('/userdetails/:id', async (req, res) => {
-        const userId = req.params.id;
-      
-        try {
-          const user = await Users.findById(userId);
-          if (!user) {
-            return res.status(404).json({ error: 'User not found' });
-          }
-          res.status(200).json(user);
-        } catch (error) {
-          console.error('Error fetching user details:', error);
-          res.status(500).json({ error: 'Internal Server Error' });
-        }
-      });
     
 
-router.post("/loginuser",[
+router.post("/loginvendor",[
     body('email').isEmail(),
     body('password',"Incorrect Password").isLength({ min: 5 })],
         async(req,res)=>{
@@ -73,22 +59,22 @@ router.post("/loginuser",[
         let email =req.body.email;
         let password=req.body.password
         try{
-            let userData=await Users.findOne({email})
-            if(!userData){
+            let vendorData=await Vendors.findOne({email})
+            if(!vendorData){
                 return res.status(400).json({ errors: "Try logging in with correct credentials" });
             }
-            const cmprPassword=await bcrypt.compare(password,userData.password)
+            const cmprPassword=await bcrypt.compare(password,vendorData.password)
             if(!cmprPassword){
                 return res.status(400).json({ errors: "Try logging in with correct password" });
             }
             const data={
                 user:{
-                    id:userData.id,
+                    id:vendorData.id,
                 }
             }
             const authToken=jwt.sign(data,JWTSECRET)
             if(cmprPassword){
-            return res.json({success:true,authToken:authToken,data:{name:userData.name,email:userData.email,_id:userData.id}})
+            return res.json({success:true,authToken:authToken,data:{name:vendorData.name,email:vendorData.email,_id:vendorData.id}})
             }
         }catch(err){
             console.log(err)
@@ -97,6 +83,22 @@ router.post("/loginuser",[
             })
         }
     })
+    router.get('/vendorname/:id', async (req, res) => {
+        try {
+          const vendorId = req.params.id;
+      
+          const vendor = await Vendors.findById(vendorId);
+      
+          if (!vendor) {
+            return res.status(404).json({ error: 'Vendor not found' });
+          }
+      
+          res.json({ vendorName: vendor.name, verified: vendor.verified});
+        } catch (error) {
+          console.error('Error fetching vendor name:', error);
+          res.status(500).json({ error: 'Internal Server Error' });
+        }
+      });
 
 
 module.exports=router

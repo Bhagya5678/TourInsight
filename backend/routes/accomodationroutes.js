@@ -2,7 +2,7 @@ const express = require("express");
 const Accomodation=require("../models/AccomodationSchema")
 const router = express.Router();
 
-router.get('/accomodations', async (req, res) => {
+router.get('/accomodation', async (req, res) => {
   try {
     const allAccomodations = await Accomodation.find();
 
@@ -13,26 +13,25 @@ router.get('/accomodations', async (req, res) => {
   }
 });
 
-  router.get('/restaurants/:id', async (req, res) => {
+  router.get('/accomodation/:id', async (req, res) => {
     const accomodation_id= req.params.id;
   
     try {
       const accomodation = await Accomodation.findById(accomodation_id);
       if (!accomodation) {
-        return res.status(404).json({ error: 'Transportation not found' });
+        return res.status(404).json({ error: 'Accomodation not found' });
       }
       res.status(200).json(accomodation); 
     } catch (error) {
-      console.error('Error fetching transportation:', error);
+      console.error('Error fetching Accomodation:', error);
       res.status(500).json({ error: 'Internal Server Error' });
     }
   });
-module.exports = router;
 
-router.post('/accomodations', async (req, res) => {
+router.post('/accomodation', async (req, res) => {
     try {
       const {
-        restaurant_name,
+        hotel_name,
         details,
         image,
         address,
@@ -44,7 +43,7 @@ router.post('/accomodations', async (req, res) => {
       } = req.body;
   
       const newAccomodations = new Accomodation({
-        restaurant_name,
+        hotel_name,
         details,
         image,
         stars,
@@ -57,7 +56,9 @@ router.post('/accomodations', async (req, res) => {
       const savedAccomodation = await newAccomodations.save();
       res.status(201).json({ Accomodation: savedAccomodation });
     } catch (error) {
-      console.error('Error creating transportation:', error);
+      console.error('Error creating accomodation:', error);
       res.status(500).json({ error: 'Internal Server Error' });
     }
   });
+
+  module.exports = router;
