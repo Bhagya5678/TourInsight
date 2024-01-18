@@ -10,7 +10,7 @@ const cities = [
   "Horsley Hills", "Chikmagalur"
 ];
 
-const PasswordGenerator = () => {
+const Searchbar = () => {
   const { setLocationInfo , startDate , endDate, location} = useGlobalContext();
 
   const handleCityClick = (city) => {
@@ -22,7 +22,7 @@ const PasswordGenerator = () => {
 
   return (
     <>
-      <div className="flex min-w-screen min-h-screen bg-bg-white p-5">
+      <div className="flex min-w-screen h-[650px] bg-bg-white p-5 relative">
         {/* Container for Search Bar and Cities List */}
         <div className="w-full mt-20 basis-2/3">
 
@@ -57,19 +57,22 @@ const PasswordGenerator = () => {
               ))}
           </div>
         </div>
-        <div className="fixed bottom-0 left-0 right-0 p-4 bg-bg-white text-center z-50 mb-10">
-        <button className="bg-medium-blue text-white py-4 px-6 rounded-md hover:bg-dark-blue focus:outline-none ">
+        {/* <div className="fixed bottom-0 left-0 right-0 p-4 bg-bg-white text-center mb-10">
+        <button className="bg-medium-blue text-white py-4 px-6 rounded-md hover:bg-dark-blue focus:outline-none">
           PROCEED
         </button>
+      </div> */}
 
-        </div>
-
-          <div className="w-full md:w-1/3 ml-10 mt-20">
+        <div className="w-full md:w-1/3 ml-10 mt-20">
+          <h4 className="text-dark-blue font-bold">CHOOSE DATES</h4>
           <CustomCalendar/>
-          </div>
+        </div>
+        <button className="absolute z-10 bottom-28 left-1/2 transform -translate-x-1/2 font-medium text-white bg-dark-blue p-4 rounded-2xl text-2xl">
+          PROCEED
+        </button>
         </div>
     </>
   );
 };
 
-export default PasswordGenerator;
+export default Searchbar;

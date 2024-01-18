@@ -22,11 +22,17 @@ import AccomodationList from "./category/AccomodationList";
 import AccomodationCard from "./Fullscreen/AccomodationCard";
 import ShoppingList from "./category/ShoppingList";
 import ShoppingCard from "./Fullscreen/ShoppingCard";
+import TouristList from "./category/TouristList";
+import Searchbar from "./components/Searchbar";
+import Sos from "./components/SOS";
+
 function App() {
   return (
     <div>
-      <Navbar/>
-    <React.StrictMode>
+      <Navbar />
+      <Sos/>
+      <Footer/>
+    {/* <React.StrictMode>
     <Router>
       <Routes>
         <Route exact path="/" element={<PasswordGenerator/>}/>
@@ -40,14 +46,15 @@ function App() {
         <Route exact path="/category/accomodation/:id" element={<AccomodationCard />}/>
         <Route exact path="/category/Shopping" element={<ShoppingList/>}/>
         <Route exact path="/category/Shopping/:id" element={<ShoppingCard />}/>
+        <Route exact path="/category/Tourist" element={<TouristList/>}/>
+        {/* <Route exact path="/category/Tourist/:id" element={<ShoppingCard />}/> */}
 
-        <Route exact path="/vendor" element={<PasswordGenerator/>}/>
+        {/* <Route exact path="/vendor" element={<PasswordGenerator/>}/>
         <Route exact path="/vendorlistings" element={<PasswordGenerator/>}/>
 
       </Routes>
     </Router>
-    </React.StrictMode>
-    <Footer/>
+    </React.StrictMode> */} 
   </div>
   );
 }

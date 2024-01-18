@@ -30,7 +30,7 @@ const RestaurantFullScreen = () => {
     <div className="flex flex-row  rounded-2xl m-10 bg-gray-300">
 
       <div className="w-2/3 max-w-[70rem] mt-12 ml-12 mr-12 flex-1 relative">
-      <h1>{restaurantDetails.restaurant_name}</h1>
+      <h1 className="text-center font-bold text-4xl mb-10">{restaurantDetails.restaurant_name}</h1>
         {/* Conditional rendering for Carousel */}
         {restaurantDetails.image && (
           <Carousel images={restaurantDetails.image} height="50%" />

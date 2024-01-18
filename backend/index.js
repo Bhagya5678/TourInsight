@@ -31,8 +31,10 @@ app.use("/api",require("./routes/transportationroutes"));
 app.use("/api",require("./routes/restaurantroutes"));
 app.use("/api",require("./routes/accomodationroutes"));
 app.use("/api",require("./routes/Shoppingroutes"));
+app.use("/api",require("./routes/Touristroutes"));
 app.use("/api",require("./routes/vendorroutes"));
 app.use("/api",require("./routes/bookindates"));
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })

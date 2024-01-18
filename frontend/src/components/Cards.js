@@ -16,11 +16,11 @@ function Cards() {
   return (
     <>
       <div className="flex flex-wrap">
-        <div className="w-full md:w-1/5 p-2" onClick={() => navigateToCategory('accommodation')}>
+        <div className="w-full md:w-1/5 p-2" onClick={() => navigateToCategory('accomodation')}>
           <div className="max-w-xs mx-auto bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:text-lg">
-            <img className="h-48 w-full object-cover object-center" src={hotel} alt="Accommodation" />
+            <img className="h-48 w-full object-cover object-center" src={hotel} alt="Accomodation" />
             <div className="p-6">
-              <div className="uppercase text-base text-navy-blue font-bold">Accommodation</div>
+              <div className="uppercase text-base text-navy-blue font-bold">Accomodation</div>
             </div>
           </div>
         </div>
@@ -40,7 +40,7 @@ function Cards() {
             </div>
           </div>
         </div>
-        <div className="w-full md:w-1/5 p-2" onClick={() => navigateToCategory('touristattraction')}>
+        <div className="w-full md:w-1/5 p-2" onClick={() => navigateToCategory('Tourist')}>
           <div className="max-w-xs mx-auto bg-white rounded-xl shadow-md overflow-hidden">
             <img className="h-48 w-full object-cover object-center" src={tourist} alt="Restaurants" />
             <div className="p-6">

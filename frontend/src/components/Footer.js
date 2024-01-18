@@ -2,7 +2,7 @@ import React from 'react'
 
 function Footer() {
   return (
-    <footer className="bg-gray-100 p-6">
+    <footer className="bg-dark-blue p-6 text-white">
       <div className="container mx-auto flex justify-between items-center">
         <div>
           <h2 className="text-lg font-semibold">Material Tailwind</h2>
