@@ -17,6 +17,7 @@ import RestaurantList from "./category/RestaurantList";
 function App() {
   return (
     <div>
+      <Navbar />
  <React.StrictMode>
     <Router>
       <Routes>
