@@ -14,6 +14,7 @@ import Cards from "./components/Cards";
 import TransportationList from "./category/Transportation";
 // import Restaurant from "./category/RestaurantList"
 import RestaurantList from "./category/RestaurantList";
+import RestaurantFullScreen from "./RestaurantCard";
 function App() {
   return (
     <div>
@@ -25,7 +26,8 @@ function App() {
         <Route exact path="/category" element={<Cards/>}/>
         <Route exact path="/category/transportation" element={<TransportationList/>}/>
         <Route exact path="/category/transportation/:id" element={<ProductFullscreen/>}/>
-   
+        <Route exact path="/category/restaurant" element={<RestaurantList/>}/>
+        <Route exact path="/category/restaurant/:id" element={<RestaurantFullScreen/>}/>
       </Routes>
     </Router>
     </React.StrictMode>

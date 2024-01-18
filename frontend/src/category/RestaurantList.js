@@ -21,7 +21,7 @@ function RestaurantList() {
 
   const handleReadMoreClick = (restaurantId) => {
     // Use the navigate function to navigate to the desired URL
-    navigate(`/category/transportation/${restaurantId}`);
+    navigate(`/category/restaurant/${restaurantId}`);
   };
 
   return (
