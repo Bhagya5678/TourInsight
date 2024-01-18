@@ -24,11 +24,13 @@ import ShoppingList from "./category/ShoppingList";
 import ShoppingCard from "./Fullscreen/ShoppingCard";
 import TouristList from "./category/TouristList";
 import Searchbar from "./components/Searchbar";
+import Sos from "./components/SOS";
+
 function App() {
   return (
     <div>
       <Navbar />
-      <Searchbar/>
+      <Sos/>
       <Footer/>
     {/* <React.StrictMode>
     <Router>
