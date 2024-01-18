@@ -22,6 +22,7 @@ import AccomodationList from "./category/AccomodationList";
 import AccomodationCard from "./Fullscreen/AccomodationCard";
 import ShoppingList from "./category/ShoppingList";
 import ShoppingCard from "./Fullscreen/ShoppingCard";
+import TouristList from "./category/TouristList";
 function App() {
   return (
     <div>
@@ -40,6 +41,8 @@ function App() {
         <Route exact path="/category/accomodation/:id" element={<AccomodationCard />}/>
         <Route exact path="/category/Shopping" element={<ShoppingList/>}/>
         <Route exact path="/category/Shopping/:id" element={<ShoppingCard />}/>
+        <Route exact path="/category/Tourist" element={<TouristList/>}/>
+        {/* <Route exact path="/category/Tourist/:id" element={<ShoppingCard />}/> */}
 
       </Routes>
     </Router>

@@ -27,11 +27,12 @@ const AccomodationCard = () => {
   };
 
   return (
-
+    <>
+    
     <div className="flex flex-row  rounded-2xl m-10 bg-gray-300">
-
+        
       <div className="w-2/3 max-w-[70rem] mt-12 ml-12 mr-12 flex-1 relative">
-      <h1>{accomodationdetails.hotel_name}</h1>
+      <h1 className="text-center font-bold text-4xl mb-10">{accomodationdetails.hotel_name}</h1>
         {/* Conditional rendering for Carousel */}
         {accomodationdetails.image && (
           <Carousel images={accomodationdetails.image} height="50%" />
@@ -52,6 +53,7 @@ const AccomodationCard = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 
