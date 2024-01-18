@@ -1,11 +1,14 @@
 import React, { useState } from 'react'
 import Button from '../components/Button';
 import { useGlobalContext } from '../Context';
+import { useNavigate } from 'react-router-dom';
 function SignUp({
     isSignedinvar
 }) { 
     const{user,setUserInfo,setAuthInfo}=useGlobalContext();
+    const navigate=useNavigate();
   const [isSignedin,setisSignedin]=useState(isSignedinvar);
+  const[isVendor,setVendor]=useState(false);
   const [data,setData]=useState({
     ...(!isSignedin && {
       name:''
@@ -68,12 +71,81 @@ const handleSignupSubmit=async(e)=>{
     });
   }
 }
+
+const handleLoginVendorSubmit=async(e)=>{
+  e.preventDefault();
+  const response= await fetch("http://localhost:5000/api/loginvendor",{
+      method:"POST",
+      headers:{
+          'Content-Type':"application/json",
+      },
+      body:JSON.stringify({
+          email:data.email,
+          password:data.password
+      })
+  });
+  const json = await response.json()
+  if(json.success){
+    localStorage.setItem("userEmail",data.email)
+    localStorage.setItem("authToken",json.authToken)
+    setUserInfo({
+      name:json.data.name,
+      email:json.data.email,
+      _id:json.data._id,
+  });
+  }else{
+    console.log("try again");
+  }
+}
+
+const handleSignupVendorSubmit=async(e)=>{
+e.preventDefault();
+const response= await fetch("http://localhost:5000/api/createvendor",{
+    method:"POST",
+    headers:{
+        'Content-Type':"application/json",
+    },
+    body:JSON.stringify({
+        name:data.name,
+        email:data.email,
+        password:data.password
+    })
+});
+const json = await response.json()
+if(json.success){
+  localStorage.setItem("userEmail",data.email)
+  localStorage.setItem("authToken",json.authToken)
+  setUserInfo({
+      name:json.data.name,
+      email:json.data.email,
+      _id:json.data._id,
+  });
+}
+}
+const handleSubmit= (e) => {
+  if(isSignedin && isVendor){
+    handleLoginVendorSubmit(e);
+  }else if(!isSignedin && isVendor){
+    handleSignupVendorSubmit(e);
+  }
+  else if(isSignedin && !isVendor){
+    handleLoginSubmit(e);
+  }else{
+    handleSignupSubmit(e);
+  }
+};
+
+
+const toggleVendor= (isVendor) => {
+  isVendor?setVendor(false):setVendor(true)
+};
+
   return (
     <div className="bg-[#c6ebf4] h-screen flex justify-center items-center">
     <div className="bg-white w-[25rem] h-[35rem] shadow-lg rounded-lg flex flex-col justify-center items-center">
-<div className="text-4xl font-bold mb-4">Welcome {isSignedin &&'Back'}</div>
+<div className="text-4xl font-bold mb-4">Welcome {isSignedin &&'Back '}{isVendor?"Vendor":"User"}</div>
     <div className='text-sm font-light mb-10'>{ isSignedin?'Sign in now to explore':'SignUp now to get started'}</div>
-    <form onSubmit={isSignedin ? handleLoginSubmit : handleSignupSubmit}>
+    <form onSubmit={(e)=>{handleSubmit(e)}}>
     {!isSignedin &&
     <div className="w-72">
   <div className="relative w-full  h-10 mb-3">
@@ -120,7 +192,20 @@ const handleSignupSubmit=async(e)=>{
   onClick={toggleSignin}>
   {isSignedin?'SignUp':'SignIn'}</span>
 </div>
-
+<div className="flex items-center">
+      <span className="text-sm mr-2">Are you a vendor?</span>
+      {isVendor?<span
+        className="text-sm text-blue-500 cursor-pointer hover:underline"
+        onClick={() => toggleVendor(isVendor)}
+      >
+        No
+      </span>:<span
+        className="text-sm text-blue-500 cursor-pointer hover:underline"
+        onClick={() => toggleVendor(isVendor)}
+      >
+       Yes
+      </span>}
+</div>
     </div>
     </div>
   )
