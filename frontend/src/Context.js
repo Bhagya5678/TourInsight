@@ -9,9 +9,6 @@ const AppProvider = ({ children }) => {
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
 
-  useEffect(()=>{
-    // console.log(user);
-  },[user])
   const setUserInfo = (userInfo) => {
     setUser(userInfo);
   };
@@ -19,7 +16,16 @@ const AppProvider = ({ children }) => {
   const setAuthInfo = (token) => {
     setAuthToken(token);
   };
-
+  const setLocationInfo = (token) => {
+    setLocation(token);
+  };
+  const setStartDateInfo = (token) => {
+    setStartDate(token);
+  };
+  const setEndDateInfo = (token) => {
+    setEndDate(token);
+  };
+    
   return (
     <AppContext.Provider
       value={{
@@ -30,9 +36,12 @@ const AppProvider = ({ children }) => {
         endDate,
         setUserInfo,
         setAuthInfo,
-        setLocation,
+        setLocationInfo,
         setStartDate,
-        setEndDate,      }}
+        setStartDateInfo,
+        setEndDateInfo,
+        setEndDate
+      }}
     >
       {children}
     </AppContext.Provider>

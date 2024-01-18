@@ -24,8 +24,8 @@ function App() {
   };
   return (
     <div>
-      <ProductFullscreen data={data} />
-    /* <React.StrictMode>
+      <Navbar />
+    {/* <React.StrictMode>
     <Router>
       <Routes>
         <Route exact path="/" element={<SignUp isSignedinvar={false} />}/>
@@ -35,7 +35,7 @@ function App() {
         <Route exact path="/category/restaurant" element={<Restaurant />}/>
       </Routes>
     </Router>
-    </React.StrictMode>
+    </React.StrictMode> */}
   </div>
   );
 }

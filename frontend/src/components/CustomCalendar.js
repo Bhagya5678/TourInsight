@@ -1,5 +1,6 @@
 import Datepicker from "react-tailwindcss-datepicker"; 
 import React, { useState } from "react"; 
+import { useGlobalContext } from "../Context";
 
 const CustomCalendar = () => { 
     const currentDate = new Date();
@@ -10,10 +11,13 @@ const CustomCalendar = () => {
     startDate: new Date(), 
     endDate: new Date().setMonth(11) 
     }); 
-    
-    const handleValueChange = (newValue) => {
-    console.log("newValue:", newValue); 
-    setValue(newValue); 
+
+    const { setStartDateInfo, setEndDateInfo} = useGlobalContext();
+
+    const handleValueChange = (newValue) => {                                                                                               
+        setStartDateInfo(newValue.startDate);
+        setEndDateInfo(newValue.endDate);
+        setValue(newValue);
     } 
     
     return (
@@ -22,7 +26,6 @@ const CustomCalendar = () => {
             primaryColor={"blue"}
             value={value} 
             onChange={handleValueChange} 
-            showFooter={true}
             displayFormat={"DD/MM/YYYY"}
             popoverDirection="down"
             minDate={currentDate} 
