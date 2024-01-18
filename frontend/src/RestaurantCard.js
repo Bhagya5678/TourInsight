@@ -3,29 +3,16 @@ import Carousel from './components/Carousel';
 import ProductInfo from './components/transportationProductInfo';
 import { useParams } from 'react-router-dom';
 import { useState } from 'react';
-import transportInfo from './components/transportationProductInfo'
 import Apps from './Accordion/Apps';
 
-const ProductFullscreen = () => {
+const RestaurantFullScreen = () => {
   const [transportationdetails, setTransportationdetails] = useState({});
   const { id } = useParams();
 
   useEffect(() => {
-    fetchTransportationDetails();
-    console.log(transportationdetails)
+    fetchRestaurantDetails();
   }, [id]);
 
-  const fetchTransportationDetails = async () => {
-    try {
-      const response = await fetch(`http://localhost:5000/api/transportation/${id}`);
-      const json = await response.json();
-      if (json) {
-        setTransportationdetails(json);
-      }
-    } catch (e) {
-      console.log(e, "error");
-    }
-  };
   const fetchRestaurantDetails = async () => {
     try {
       const response = await fetch(`http://localhost:5000/api/restaurant/${id}`);
@@ -67,4 +54,4 @@ const ProductFullscreen = () => {
   );
 };
 
-export default ProductFullscreen;
+export default RestaurantFullScreen;
