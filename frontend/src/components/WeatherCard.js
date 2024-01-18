@@ -4,7 +4,7 @@ const WeatherCard = () => {
   const [weatherData, setWeatherData] = useState(null);
 
   const fetchWeatherData = () => {
-    fetch('https://api.weatherapi.com/v1/forecast.json?key=ff9b41622f994b1287a73535210809&q=Shimla&days=3')
+    fetch('https://api.weatherapi.com/v1/forecast.json?key=ff9b41622f994b1287a73535210809&q=Mumbai&days=3')
       .then(response => response.json())
       .then(json => setWeatherData(json));
   };
@@ -25,9 +25,9 @@ const WeatherCard = () => {
   }, []);
 
   return (
-    <div className="w-full max-w-sm mx-auto">
+    <div className="max-w-sm mx-auto bg-bg-white p-5 rounded-3xl shadow-2xl">
       {weatherData ? (
-        <div>
+        <>
           <h2 className="font-bold text-gray-800 text-lg dark:text-gray-400">
             {formattedDateDisplay(new Date())}
           </h2>
@@ -55,7 +55,7 @@ const WeatherCard = () => {
               </div>
             ))}
           </div>
-        </div>
+        </>
       ) : (
         <div className="animate-pulse">
           <div className="flex mt-4 mb-5">
