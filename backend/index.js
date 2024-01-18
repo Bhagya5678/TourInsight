@@ -28,6 +28,8 @@ res.status(200).json("Got it");
 app.use("/api",require("./routes/createuserroutes"));
 app.use("/api",require("./routes/fetchCategories"));
 app.use("/api",require("./routes/transportationroutes"));
+app.use("/api",require("./routes/restaurantroutes"));
+app.use("/api",require("./routes/accomodationroutes"));
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)
 })

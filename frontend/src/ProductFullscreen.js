@@ -28,9 +28,11 @@ const ProductFullscreen = () => {
   };
 
   return (
+
     <div className="flex flex-row  rounded-2xl m-10 bg-gray-300">
 
       <div className="w-2/3 max-w-[70rem] mt-12 ml-12 mr-12 flex-1 relative">
+
         {/* Conditional rendering for Carousel */}
         {transportationdetails.image && (
           <Carousel images={transportationdetails.image} height="50%" />
