@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const {Schema}=require('mongoose');
 
 const AccomodationSchema = new Schema({ 
-    restaurant_name: {
+    hotel_name: {
         type: String,
         required:true
     },
