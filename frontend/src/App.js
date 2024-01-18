@@ -44,6 +44,9 @@ function App() {
         <Route exact path="/category/Tourist" element={<TouristList/>}/>
         {/* <Route exact path="/category/Tourist/:id" element={<ShoppingCard />}/> */}
 
+        <Route exact path="/vendor" element={<PasswordGenerator/>}/>
+        <Route exact path="/vendorlistings" element={<PasswordGenerator/>}/>
+
       </Routes>
     </Router>
     </React.StrictMode>

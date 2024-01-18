@@ -83,6 +83,22 @@ router.post("/loginvendor",[
             })
         }
     })
+    router.get('/vendorname/:id', async (req, res) => {
+        try {
+          const vendorId = req.params.id;
+      
+          const vendor = await Vendors.findById(vendorId);
+      
+          if (!vendor) {
+            return res.status(404).json({ error: 'Vendor not found' });
+          }
+      
+          res.json({ vendorName: vendor.name, verified: vendor.verified});
+        } catch (error) {
+          console.error('Error fetching vendor name:', error);
+          res.status(500).json({ error: 'Internal Server Error' });
+        }
+      });
 
 
 module.exports=router
