@@ -3,6 +3,8 @@ import Carousel from './components/Carousel';
 import ProductInfo from './components/transportationProductInfo';
 import { useParams } from 'react-router-dom';
 import { useState } from 'react';
+import transportInfo from './components/transportationProductInfo'
+import Apps from './Accordion/Apps';
 
 const ProductFullscreen = () => {
   const [transportationdetails, setTransportationdetails] = useState({});
@@ -10,6 +12,7 @@ const ProductFullscreen = () => {
 
   useEffect(() => {
     fetchTransportationDetails();
+    console.log(transportationdetails)
   }, [id]);
 
   const fetchTransportationDetails = async () => {
@@ -25,8 +28,10 @@ const ProductFullscreen = () => {
   };
 
   return (
-    <div className="flex flex-row h-screen">
-      <div className="w-2/3 flex-1">
+
+    <div className="flex flex-row  rounded-2xl m-10 bg-gray-300">
+
+      <div className="w-2/3 max-w-[70rem] mt-12 ml-12 mr-12 flex-1 relative">
 
         {/* Conditional rendering for Carousel */}
         {transportationdetails.image && (
@@ -39,11 +44,12 @@ const ProductFullscreen = () => {
         </div>
       </div>
 
-      <div className="bg-gray-100 p-8 flex flex-col justify-between justify-self-end">
-        <div className="mt-4 w-full">
+      <div className="bg-gray-300 p-8  border-l border-gray-200 rounded-2xl flex flex-col justify-start justify-self-end">
+        <div className="w-100%">
           {/* Add to Cart and Add to Wishlist buttons */}
-          <button className="bg-blue-500 text-white px-4 py-2 rounded-md w-full mb-2">Add to Cart</button>
-          <button className="bg-gray-300 text-gray-700 px-4 py-2 rounded-md w-full">Add to Wishlist</button>
+          <Apps/>
+          <ProductInfo price={transportationdetails.price} title={transportationdetails.title} expectedPrice={5000} />
+          <button className="bg-blue-500 text-white px-4 py-2 rounded-md w-full mb-2">Book Now</button>
         </div>
       </div>
     </div>
