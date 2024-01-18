@@ -2,6 +2,7 @@ import Navbar from "./components/Navbar"
 import './App.css';
 import SignUp from "./pages/Signup";
 import React from "react";
+
 import {
   BrowserRouter as Router,
   Routes,
@@ -15,14 +16,17 @@ import TransportationList from "./category/Transportation";
 // import Restaurant from "./category/RestaurantList"
 import RestaurantList from "./category/RestaurantList";
 import RestaurantFullScreen from "./RestaurantCard";
+import PasswordGenerator from "./components/Searchbar";
+import Footer from "./components/Footer";
 function App() {
   return (
     <div>
-      <ProductFullscreen data={data} />
+      <Navbar/>
     <React.StrictMode>
     <Router>
       <Routes>
-        <Route exact path="/" element={<SignUp isSignedinvar={false} />}/>
+        <Route exact path="/" element={<PasswordGenerator/>}/>
+        <Route exact path="/login" element={<SignUp isSignedinvar={false} />}/>
         <Route exact path="/category" element={<Cards/>}/>
         <Route exact path="/category/transportation" element={<TransportationList/>}/>
         <Route exact path="/category/transportation/:id" element={<ProductFullscreen/>}/>
@@ -31,6 +35,7 @@ function App() {
       </Routes>
     </Router>
     </React.StrictMode>
+    <Footer/>
   </div>
   );
 }

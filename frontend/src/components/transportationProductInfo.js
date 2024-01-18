@@ -1,9 +1,8 @@
 import React from 'react';
 
-const ProductInfo = ({ title,  price, expectedPrice,numRatings }) => {
+const ProductInfo = ({ title,  price, expectedPrice }) => {
   return (
     <div className="flex-grow p-8">
-      <h1 className="text-3xl font-bold mb-6">{title}</h1>
       <div className="flex items-center mb-6">
         <div className="flex items-center">
           {/* Displaying stars based on the 'stars' value */}
