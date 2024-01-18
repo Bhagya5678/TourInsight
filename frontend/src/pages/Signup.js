@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 function SignUp({
     isSignedinvar
 }) { 
-    const{user,setUserInfo,setAuthInfo}=useGlobalContext();
+    const{user,setUserInfo,vendor,vendorInfo,setAuthInfo}=useGlobalContext();
     const navigate=useNavigate();
   const [isSignedin,setisSignedin]=useState(isSignedinvar);
   const[isVendor,setVendor]=useState(false);
@@ -41,6 +41,7 @@ function SignUp({
         email:json.data.email,
         _id:json.data._id,
     });
+    navigate("category");
     }else{
       console.log("try again");
     }
@@ -69,6 +70,7 @@ const handleSignupSubmit=async(e)=>{
         email:json.data.email,
         _id:json.data._id,
     });
+    navigate("/category");
   }
 }
 
@@ -93,6 +95,7 @@ const handleLoginVendorSubmit=async(e)=>{
       email:json.data.email,
       _id:json.data._id,
   });
+  navigate("/vendor");
   }else{
     console.log("try again");
   }
@@ -120,6 +123,7 @@ if(json.success){
       email:json.data.email,
       _id:json.data._id,
   });
+  navigate("/vendor");
 }
 }
 const handleSubmit= (e) => {

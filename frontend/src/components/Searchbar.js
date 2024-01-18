@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import CustomCalendar from "./CustomCalendar";
 import { useGlobalContext } from "../Context";
+import { useNavigate } from "react-router-dom";
 
 const cities = [
   "Shimla", "Manali", "Darjeeling", "Ooty", "Munnar", "Nainital", "Mussoorie",
@@ -12,9 +13,13 @@ const cities = [
 
 const Searchbar = () => {
   const { setLocationInfo , startDate , endDate, location} = useGlobalContext();
+  const navigate=useNavigate();
 
   const handleCityClick = (city) => {
     setLocationInfo(city);
+  };
+  const handleSubmit = () => {
+    navigate("/category")
   };
 
   const [search, setSearch] = useState("");
@@ -67,7 +72,7 @@ const Searchbar = () => {
           <h4 className="text-dark-blue font-bold">CHOOSE DATES</h4>
           <CustomCalendar/>
         </div>
-        <button className="absolute z-10 bottom-28 left-1/2 transform -translate-x-1/2 font-medium text-white bg-dark-blue p-4 rounded-2xl text-2xl">
+        <button onClick={handleSubmit}className="absolute z-10 bottom-28 left-1/2 transform -translate-x-1/2 font-medium text-white bg-dark-blue p-4 rounded-2xl text-2xl">
           PROCEED
         </button>
         </div>

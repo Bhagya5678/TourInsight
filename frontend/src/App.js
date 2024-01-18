@@ -25,18 +25,18 @@ import ShoppingCard from "./Fullscreen/ShoppingCard";
 import TouristList from "./category/TouristList";
 import Searchbar from "./components/Searchbar";
 import Sos from "./components/SOS";
+import Vendor from "./pages/Vendor";
 
 function App() {
   return (
     <div>
       <Navbar />
-      <Sos/>
-      <Footer/>
-    {/* <React.StrictMode>
+    <React.StrictMode>
     <Router>
       <Routes>
         <Route exact path="/" element={<PasswordGenerator/>}/>
         <Route exact path="/login" element={<SignUp isSignedinvar={false} />}/>
+        <Route exact path="/searchbar" element={<Searchbar/>}/>
         <Route exact path="/category" element={<Cards/>}/>
         <Route exact path="/category/transportation" element={<TransportationList/>}/>
         <Route exact path="/category/transportation/:id" element={<ProductFullscreen/>}/>
@@ -47,14 +47,15 @@ function App() {
         <Route exact path="/category/Shopping" element={<ShoppingList/>}/>
         <Route exact path="/category/Shopping/:id" element={<ShoppingCard />}/>
         <Route exact path="/category/Tourist" element={<TouristList/>}/>
-        {/* <Route exact path="/category/Tourist/:id" element={<ShoppingCard />}/> */}
+        <Route exact path="/category/Tourist/:id" element={<ShoppingCard />}/>
 
-        {/* <Route exact path="/vendor" element={<PasswordGenerator/>}/>
+        <Route exact path="/vendor/:id" element={<Vendor/>}/>
         <Route exact path="/vendorlistings" element={<PasswordGenerator/>}/>
 
       </Routes>
     </Router>
-    </React.StrictMode> */} 
+    </React.StrictMode> 
+    <Footer/>
   </div>
   );
 }

@@ -61,5 +61,26 @@ router.post('/previousbooking/:id', async (req, res) => {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
+
+router.get('/previousbooking/:id', async (req, res) => {
+  const userId = req.params.id;
+
+  try {
+    // Find the user by ID
+    const user = await Users.findById(userId);
+
+    if (!user) {
+      return res.status(404).json({ error: 'User not found' });
+    }
+
+    // Get all previous bookings of the user
+    const previousBookings = user.previousbooking || [];
+
+    res.json({ previousBookings });
+  } catch (error) {
+    console.error('Error fetching previous bookings:', error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
 module.exports = router;
 

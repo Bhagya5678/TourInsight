@@ -4,6 +4,7 @@ const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
   const [user, setUser] = useState({});
+  const [vendor, setVendor] = useState({});
   const [authToken, setAuthToken] = useState('');
   const [location, setLocation] = useState('');
   const [startDate, setStartDate] = useState('');
@@ -11,6 +12,9 @@ const AppProvider = ({ children }) => {
 
   const setUserInfo = (userInfo) => {
     setUser(userInfo);
+  };
+  const setVendorInfo = (vendorInfo) => {
+    setVendor(vendorInfo)
   };
 
   const setAuthInfo = (token) => {
@@ -34,6 +38,8 @@ const AppProvider = ({ children }) => {
         location,
         startDate,
         endDate,
+        vendor,
+        setVendorInfo,
         setUserInfo,
         setAuthInfo,
         setLocationInfo,
