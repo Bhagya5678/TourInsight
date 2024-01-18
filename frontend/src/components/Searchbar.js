@@ -10,7 +10,7 @@ const cities = [
   "Horsley Hills", "Chikmagalur"
 ];
 
-const PasswordGenerator = () => {
+const Searchbar = () => {
   const { setLocationInfo , startDate , endDate, location} = useGlobalContext();
 
   const handleCityClick = (city) => {
@@ -57,14 +57,14 @@ const PasswordGenerator = () => {
               ))}
           </div>
         </div>
-        <div className="fixed bottom-0 left-0 right-0 p-4 bg-bg-white text-center z-50 mb-10">
-        <button className="bg-medium-blue text-white py-4 px-6 rounded-md hover:bg-dark-blue focus:outline-none ">
+        {/* <div className="fixed bottom-0 left-0 right-0 p-4 bg-bg-white text-center mb-10">
+        <button className="bg-medium-blue text-white py-4 px-6 rounded-md hover:bg-dark-blue focus:outline-none">
           PROCEED
         </button>
+      </div> */}
 
-        </div>
-
-          <div className="w-full md:w-1/3 ml-10 mt-20">
+        <div className="w-full md:w-1/3 ml-10 mt-20">
+          <h4 className="text-dark-blue font-bold">CHOOSE DATES</h4>
           <CustomCalendar/>
           </div>
         </div>
@@ -72,4 +72,4 @@ const PasswordGenerator = () => {
   );
 };
 
-export default PasswordGenerator;
+export default Searchbar;

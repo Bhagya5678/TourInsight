@@ -4,7 +4,7 @@ const WeatherCard = () => {
   const [weatherData, setWeatherData] = useState(null);
 
   const fetchWeatherData = () => {
-    fetch('https://api.weatherapi.com/v1/forecast.json?key=ff9b41622f994b1287a73535210809&q=Mumbai&days=3')
+    fetch('https://api.weatherapi.com/v1/forecast.json?key=ff9b41622f994b1287a73535210809&q=Shimla&days=3')
       .then(response => response.json())
       .then(json => setWeatherData(json));
   };

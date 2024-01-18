@@ -18,11 +18,14 @@ import RestaurantList from "./category/RestaurantList";
 import RestaurantFullScreen from "./RestaurantCard";
 import PasswordGenerator from "./components/Searchbar";
 import Footer from "./components/Footer";
+import Searchbar from "./components/Searchbar";
+import EditUserProfile from "./components/editUserProfile";
+
 function App() {
   return (
     <div>
       <Navbar/>
-    <React.StrictMode>
+    {/* <React.StrictMode>
     <Router>
       <Routes>
         <Route exact path="/" element={<PasswordGenerator/>}/>
@@ -34,8 +37,7 @@ function App() {
         <Route exact path="/category/restaurant/:id" element={<RestaurantFullScreen/>}/>
       </Routes>
     </Router>
-    </React.StrictMode>
-    <Footer/>
+    </React.StrictMode> */}
   </div>
   );
 }

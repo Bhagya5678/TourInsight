@@ -21,7 +21,7 @@ const CustomCalendar = () => {
     } 
     
     return (
-        <div className="border-solid border-2 border-medium-blue rounded-lg mt-5">
+        <div className="border-solid border-2 border-medium-blue rounded-lg mt-2">
             <Datepicker 
             primaryColor={"blue"}
             value={value} 
