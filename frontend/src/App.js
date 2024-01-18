@@ -23,10 +23,13 @@ import AccomodationCard from "./Fullscreen/AccomodationCard";
 import ShoppingList from "./category/ShoppingList";
 import ShoppingCard from "./Fullscreen/ShoppingCard";
 import TouristList from "./category/TouristList";
+import Searchbar from "./components/Searchbar";
 function App() {
   return (
     <div>
-      <Navbar/>
+      <Navbar />
+      <Searchbar/>
+      <Footer/>
     {/* <React.StrictMode>
     <Router>
       <Routes>
@@ -44,12 +47,12 @@ function App() {
         <Route exact path="/category/Tourist" element={<TouristList/>}/>
         {/* <Route exact path="/category/Tourist/:id" element={<ShoppingCard />}/> */}
 
-        <Route exact path="/vendor" element={<PasswordGenerator/>}/>
+        {/* <Route exact path="/vendor" element={<PasswordGenerator/>}/>
         <Route exact path="/vendorlistings" element={<PasswordGenerator/>}/>
 
       </Routes>
     </Router>
-    </React.StrictMode> */}
+    </React.StrictMode> */} 
   </div>
   );
 }
