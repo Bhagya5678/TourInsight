@@ -14,7 +14,7 @@ router.get('/transportation', async (req, res) => {
   }
 });
 
-router.get('/transportation/:id', async (req, res) => {
+router.get('/transportation', async (req, res) => {
     try {
       const allTransportaions = await Transportation.find();
   
@@ -24,23 +24,20 @@ router.get('/transportation/:id', async (req, res) => {
       res.status(500).json({ error: "Internal Server Error" });
     }
   });
-
-  
-router.get('/transportation/:id', async (req, res) => {
+  router.get('/transportation/:id', async (req, res) => {
     const transportationId = req.params.id;
   
     try {
       const transportation = await Transportation.findById(transportationId);
       if (!transportation) {
-        return res.status(404).json({ error: "Transportation not found" });
+        return res.status(404).json({ error: 'Transportation not found' });
       }
-      res.json({ transportation });
+      res.status(200).json(transportation); // Send transportation details directly to the frontend
     } catch (error) {
-      console.error("Error fetching transportation:", error);
-      res.status(500).json({ error: "Internal Server Error" });
+      console.error('Error fetching transportation:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
     }
   });
-
 module.exports = router;
 
 router.post('/transportation', async (req, res) => {
