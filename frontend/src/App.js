@@ -10,34 +10,34 @@ import {
 } from 'react-router-dom'
 import { AppProvider } from "./Context";
 import ProductFullscreen from './ProductFullscreen';
-
-const data = {
-  id: '1-18',
-  images: ['https://images.unsplash.com/photo-1497436072909-60f360e1d4b1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2560&q=80',
-  'https://images.unsplash.com/photo-1493246507139-91e8fad9978e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2940&q=80',
-  'https://images.unsplash.com/photo-1518623489648-a173ef7824f3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2762&q=80'],
-  info: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tenetur eum, alias ipsum asperiores, fugiat consectetur earum ratione omnis illum exercitationem cumque reiciendis ipsa architecto? Praesentium perferendis excepturi enim neque labore!",
-  title: 'Product Title',
-  price: 2500,
-  longitude: 546,
-  latitude: 657,
-  numRatings: 53,
-  MLPricePredict: 2650,
-  stars: 4,
-  address: "business address abc123"
-};
+import Cards from "./components/Cards";
+import Transportation from "./category/Transportation";
+import Restaurant from "./category/Restaurant";
+import ProductInfo from "./components/transportationProductInfo";
 
 function App() {
+  const staticData = {
+    images: ['image1.jpg', 'image2.jpg', 'image3.jpg'],
+    stars: 4.5,
+    numRatings: 120,
+    title: 'Sample Product',
+    price: 49.99,
+    expectedPrice: 39.99,
+    info: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
+  };
   return (
     <div>
-      <ProductFullscreen data={data} />
-    {/* <React.StrictMode>
+    <React.StrictMode>
     <Router>
       <Routes>
         <Route exact path="/" element={<SignUp isSignedinvar={false} />}/>
+        <Route exact path="/category" element={<Cards/>}/>
+        <Route exact path="/category/transportation" element={<Transportation/>}/>
+        <Route exact path="/category/transportation/:id" element={<ProductFullscreen/>}/>
+        <Route exact path="/category/restaurant" element={<Restaurant />}/>
       </Routes>
     </Router>
-    </React.StrictMode> */}
+    </React.StrictMode>
   </div>
   );
 }
