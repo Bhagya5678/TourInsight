@@ -25,7 +25,7 @@ function App() {
   return (
     <div>
       <ProductFullscreen data={data} />
-    {/* <React.StrictMode>
+    /* <React.StrictMode>
     <Router>
       <Routes>
         <Route exact path="/" element={<SignUp isSignedinvar={false} />}/>
