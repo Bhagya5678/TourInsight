@@ -27,6 +27,7 @@ import Searchbar from "./components/Searchbar";
 import Sos from "./components/SOS";
 import Vendor from "./pages/Vendor";
 import Vendorcreatetransport from "./pages/vendorcreatetransport";
+import RestaurantForm from "./pages/vendorcreaterstaurant";
 function App() {
   return (
     <div>
@@ -51,7 +52,7 @@ function App() {
 
         <Route exact path="/vendor/:vendorId" element={<Vendor/>}/>
         <Route exact path="/vendorcreatetransport/:vendorId" element={<Vendorcreatetransport/>}/>
-
+        <Route exact path="/vendorcreaterestaurant/:vendorId" element={<RestaurantForm/>}/>
       </Routes>
     </Router>
     </React.StrictMode> 

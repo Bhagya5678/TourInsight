@@ -14,7 +14,7 @@ function Vendor() {
       try {
         const response = await fetch(`http://localhost:5000/api/${category}`);
         const data = await response.json();
-        console.log(data);
+
         switch (category) {
           case 'transportation':
             const filteredTransportations = data.allTransportations.filter(
@@ -85,7 +85,7 @@ function Vendor() {
       <h2 className="text-3xl font-bold mb-4 mt-8">Accommodations</h2>
       <div className="m-4 space-x-2">
     <button
-     onClick={() => navigate("/vendorcreatetransport")}className=" bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md"
+     onClick={() => navigate(`/vendorcreaterestaurant/${vendorId}`)}className=" bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md"
     >
       Create
     </button>
@@ -129,12 +129,6 @@ function Vendor() {
             <div className="p-6">
               <div className="uppercase text-base text-navy-blue font-bold">{restaurant.restaurant_name}</div>
               <p className="mt-2 text-gray-500 text-sm">{restaurant.details}</p>
-              <button
-                onClick={() => handleReadMoreClick(restaurant._id)}
-                className="mt-2 bg-blue-300 hover:bg-navy-blue-dark text-navy-blue-dark font-bold py-2 px-4 rounded-lg"
-              >
-                READ MORE
-              </button>
             </div>
           </div>
         </div>
