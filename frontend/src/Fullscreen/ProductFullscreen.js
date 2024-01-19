@@ -44,7 +44,7 @@ const ProductFullscreen = () => {
 
         {/* Additional Information below the carousel */}
         <div className="p-4 text-center bg-gray-200">
-          <p>{transportationDetails.details}</p>
+          <p>{transportationdetails.details}</p>
         </div>
       </div>
       <div className="bg-gray-300 p-8  border-l border-gray-200 rounded-2xl flex flex-col justify-start justify-self-end">
