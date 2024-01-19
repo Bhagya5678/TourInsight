@@ -26,15 +26,21 @@ import TouristList from "./category/TouristList";
 import Searchbar from "./components/Searchbar";
 import Sos from "./components/SOS";
 import Vendor from "./pages/Vendor";
+import DatePicker from "./components/DatePicker";
 
 function App() {
+  
   return (
     <div>
-      <Navbar />
-    <React.StrictMode>
-    <Router>
-      <Routes>
+      <React.StrictMode>
+      <Router>
+      <Navbar />  
+    
+    
+          <Routes>
+            
         <Route exact path="/" element={<PasswordGenerator/>}/>
+        <Route exact path="/sos" element={<Sos/>}/>
         <Route exact path="/login" element={<SignUp isSignedinvar={false} />}/>
         <Route exact path="/searchbar" element={<Searchbar/>}/>
         <Route exact path="/category" element={<Cards/>}/>

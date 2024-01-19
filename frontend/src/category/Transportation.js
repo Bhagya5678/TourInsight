@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useGlobalContext } from '../Context';
 
 function TransportationList() {
   const [transportations, setTransportations] = useState([]);
   const navigate = useNavigate();
+  const { location } = useGlobalContext();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -19,6 +21,10 @@ function TransportationList() {
     fetchData();
   }, []);
 
+  const filteredTransportation = transportations.filter((transportations) => {
+    return transportations.location === location;
+  });
+
   const handleReadMoreClick = (transportationId) => {
     // Use the navigate function to navigate to the desired URL
     navigate(`/category/transportation/${transportationId}`);
@@ -26,7 +32,7 @@ function TransportationList() {
 
   return (
     <div className="flex flex-wrap justify-start">
-      {transportations.map((transportation) => (
+      {filteredTransportation.map((transportation) => (
         <div key={transportation._id} className="w-1/4 p-4">
           <div className="max-w-xs mx-auto bg-white rounded-xl overflow-hidden shadow-md">
             <img

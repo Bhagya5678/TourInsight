@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useGlobalContext } from '../Context';
 
 function AccomodationList() {
   const [accomodation, setAccomodation] = useState([]);
   const navigate = useNavigate();
-
+  const { location } = useGlobalContext;
 
   const fetchData = async () => {
     try {
@@ -24,10 +25,13 @@ function AccomodationList() {
     // Use the navigate function to navigate to the desired URL
     navigate(`/category/accomodation/${accomodation_id}`);
   };
-
+  const filteredAccomodation = accomodation.filter((accomodation) => {
+    return accomodation.location === location;
+  });
+  
   return (
     <div className="flex flex-wrap justify-start">
-      {accomodation.map((accomodation) => (
+      {filteredAccomodation.map((accomodation) => (
         <div key={accomodation._id} className="w-1/4 p-4">
           <div className="max-w-xs mx-auto bg-white rounded-xl overflow-hidden shadow-md">
             <img
@@ -50,6 +54,7 @@ function AccomodationList() {
       ))}
     </div>
   );
+  
 }
 
 export default AccomodationList;

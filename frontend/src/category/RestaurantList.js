@@ -1,32 +1,40 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useGlobalContext } from '../Context';
 
 function RestaurantList() {
-  const [restaurant, setRestaurant] = useState([]);
+  const [restaurants, setRestaurants] = useState([]);
   const navigate = useNavigate();
+  const { location } = useGlobalContext();
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await fetch('http://localhost:5000/api/restaurants');
         const data = await response.json();
-        setRestaurant(data.allRestaurants);
+        setRestaurants(data.allRestaurants);
       } catch (error) {
-        console.error('Error fetching transportation data:', error);
+        console.error('Error fetching restaurant data:', error);
       }
     };
 
     fetchData();
   }, []);
 
+  const filteredRestaurants = restaurants.filter((restaurant) => {
+    return restaurant.location === location;
+  });
+
+  console.log('All Restaurants:', restaurants);
+  console.log('Filtered Restaurants:', filteredRestaurants);
+
   const handleReadMoreClick = (restaurantId) => {
-    // Use the navigate function to navigate to the desired URL
     navigate(`/category/restaurant/${restaurantId}`);
   };
 
   return (
     <div className="flex flex-wrap justify-start">
-      {restaurant.map((restaurant) => (
+      {filteredRestaurants.map((restaurant) => (
         <div key={restaurant._id} className="w-1/4 p-4">
           <div className="max-w-xs mx-auto bg-white rounded-xl overflow-hidden shadow-md">
             <img
@@ -52,4 +60,3 @@ function RestaurantList() {
 }
 
 export default RestaurantList;
-

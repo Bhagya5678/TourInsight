@@ -2,12 +2,19 @@ import React, { useState } from "react";
 import logoImg from "../images/logo.png";
 import WeatherCard from "./WeatherCard";
 import avatar from "../images/hotel.png";
+import { Link, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   const [weatherWidget, setWeatherWidget] = useState(false);
+  const navigate = useNavigate();
 
   function toggleWeather() {
     setWeatherWidget(!weatherWidget);
+  }
+
+  function handleSosClick() {
+    // Redirect to the SOS page
+    navigate("/sos");
   }
 
   return (
@@ -34,7 +41,7 @@ const Navbar = () => {
                 </a>
               </li>
               <li>
-                <a href="#" className="block py-2 px-3 text-bg-white text-lg rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-medium-blue md:p-0 dark:text-white md:dark:hover:text-blue-500">
+                <a href="#" className="block py-2 px-3 text-bg-white text-lg rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-medium-blue md:p-0 dark:text-white md:dark:hover:text-blue-500" onClick={handleSosClick}>
                   SOS
                 </a>
               </li>

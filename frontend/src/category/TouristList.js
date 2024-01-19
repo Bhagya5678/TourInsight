@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useGlobalContext } from '../Context';
 
 function TouristList() {
   const [Tourist, setTourist] = useState([]);
   const navigate = useNavigate();
+  const { location } = useGlobalContext();
+
 
   useEffect(() => {
     const fetchData = async () => {
@@ -18,6 +21,9 @@ function TouristList() {
 
     fetchData();
   }, []);
+  const filteredTourist = Tourist.filter((Tourist) => {
+    return Tourist.location === location;
+  });
 
 //   const handleReadMoreClick = (Shoppingid) => {
 //     // Use the navigate function to navigate to the desired URL
@@ -26,7 +32,7 @@ function TouristList() {
 
   return (
     <div className="flex flex-wrap justify-start">
-      {Tourist.map((Tourist) => (
+      {filteredTourist.map((Tourist) => (
         <div key={Tourist._id} className="w-1/4 p-4">
           <div className="max-w-xs mx-auto bg-white rounded-xl overflow-hidden shadow-md">
             <img

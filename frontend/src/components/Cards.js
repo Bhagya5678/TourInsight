@@ -15,8 +15,8 @@ function Cards() {
 
   return (
     <>
-      <div className="flex flex-wrap">
-        <div className="w-full md:w-1/5 p-2" onClick={() => navigateToCategory('accomodation')}>
+      <div className="flex flex-wrap mt-10">
+        <div className="w-full md:w-1/5 p-2 " onClick={() => navigateToCategory('accomodation')}>
           <div className="max-w-xs mx-auto bg-white rounded-xl shadow-md overflow-hidden transition-all duration-300 hover:text-lg">
             <img className="h-48 w-full object-cover object-center" src={hotel} alt="Accomodation" />
             <div className="p-6">

@@ -1,9 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useGlobalContext } from '../Context';
 
 function ShoppingList() {
   const [Shopping, setShopping] = useState([]);
   const navigate = useNavigate();
+  const { location } = useGlobalContext();
 
   useEffect(() => {
     const fetchData = async () => {
@@ -18,15 +20,18 @@ function ShoppingList() {
 
     fetchData();
   }, []);
-
+  const filteredShopping = Shopping.filter((Shopping) => {
+    return Shopping.location === location;
+  });
 //   const handleReadMoreClick = (Shoppingid) => {
 //     // Use the navigate function to navigate to the desired URL
 //     navigate(`/category/Shopping/${Shoppingid}`);
 //   };
-
+  console.log('All Restaurants:', Shopping);
+  console.log('Filtered Restaurants:', filteredShopping);
   return (
     <div className="flex flex-wrap justify-start">
-      {Shopping.map((Shopping) => (
+      {filteredShopping.map((Shopping) => (
         <div key={Shopping._id} className="w-1/4 p-4">
           <div className="max-w-xs mx-auto bg-white rounded-xl overflow-hidden shadow-md">
             <img

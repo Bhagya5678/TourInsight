@@ -1,14 +1,14 @@
 import React, {useState} from "react"; 
 import Datepicker from "react-tailwindcss-datepicker"; 
+import { useGlobalContext } from "../Context";
 
-const App = () => { 
+const DatePicker = () => { 
     const {startDate, endDate} = useGlobalContext();
 
     const [value, setValue] = useState({ 
 
         startDate: null ,
         endDate: null 
-
     }); 
 
     const handleValueChange = (newValue) => {
@@ -19,7 +19,16 @@ const App = () => {
 
     return (
         <Datepicker 
-
+            disabledDates={[
+                {
+                    startDate: "2023-02-02",
+                    endDate: "2023-02-02"
+                },
+                {
+                    startDate: "2023-02-11",
+                    endDate: "2023-02-12"
+                },
+            ]}
             minDate={new Date(startDate)} 
             maxDate={new Date(endDate)} 
             value={value} 
@@ -30,4 +39,4 @@ const App = () => {
 
     );
 }; 
-export default App;
+export default DatePicker;

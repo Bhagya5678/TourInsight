@@ -8,7 +8,7 @@ const cities = [
   "Kodaikanal", "Gulmarg", "Shillong", "Mount Abu", "Dalhousie", "Auli", "Kasauli",
   "Coorg", "Lonavala", "Mahabaleshwar", "Pahalgam", "Lansdowne", "Yercaud", "Tawang",
   "Coonoor", "Ranikhet", "Saputara", "Chamba", "Kufri", "Khajjiar", "Almora",
-  "Horsley Hills", "Chikmagalur"
+  "Horsley Hills", "Chikmagalur","Mumbai","Delhi"
 ];
 
 const Searchbar = () => {
