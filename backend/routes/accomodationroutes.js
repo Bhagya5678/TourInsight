@@ -39,7 +39,8 @@ router.post('/accomodation', async (req, res) => {
         stars,
         location,
         price,
-        reviews
+        reviews,
+        vendor_id
       } = req.body;
   
       const newAccomodations = new Accomodation({
@@ -51,7 +52,8 @@ router.post('/accomodation', async (req, res) => {
         booked_dates,
         location,
         price,
-        reviews
+        reviews,
+        vendor_id
       });
       const savedAccomodation = await newAccomodations.save();
       res.status(201).json({ Accomodation: savedAccomodation });

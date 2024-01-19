@@ -10,6 +10,9 @@ const AppProvider = ({ children }) => {
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
 
+  useEffect(()=>{
+    console.log(vendor)
+  },[vendor])
   const setUserInfo = (userInfo) => {
     setUser(userInfo);
   };

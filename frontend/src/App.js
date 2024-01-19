@@ -26,7 +26,7 @@ import TouristList from "./category/TouristList";
 import Searchbar from "./components/Searchbar";
 import Sos from "./components/SOS";
 import Vendor from "./pages/Vendor";
-
+import Vendorcreatetransport from "./pages/vendorcreatetransport";
 function App() {
   return (
     <div>
@@ -49,8 +49,8 @@ function App() {
         <Route exact path="/category/Tourist" element={<TouristList/>}/>
         <Route exact path="/category/Tourist/:id" element={<ShoppingCard />}/>
 
-        <Route exact path="/vendor/:id" element={<Vendor/>}/>
-        <Route exact path="/vendorlistings" element={<PasswordGenerator/>}/>
+        <Route exact path="/vendor/:vendorId" element={<Vendor/>}/>
+        <Route exact path="/vendorcreatetransport/:vendorId" element={<Vendorcreatetransport/>}/>
 
       </Routes>
     </Router>

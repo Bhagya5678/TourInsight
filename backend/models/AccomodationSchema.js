@@ -37,6 +37,10 @@ const AccomodationSchema = new Schema({
     reviews:{
         type:Array,
         required:true
+    },
+    vendor_id:{
+        type:String,
+        required:true
     }
     });
-module.exports= mongoose.model('Acommodation', AccomodationSchema);
+module.exports= mongoose.model('Accommodation', AccomodationSchema);
