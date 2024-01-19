@@ -8,7 +8,7 @@ import { MdVerified } from "react-icons/md";
 
 
 const AccomodationCard = () => {
-    const [accomodationdetails, setaccomodaiondetails] = useState({});
+    const [accomodationdetails, setaccomodationdetails] = useState({});
     const [vendorDetails, setVendorDetails] = useState({});
     const { id } = useParams();
     
@@ -31,7 +31,7 @@ const AccomodationCard = () => {
         const response = await fetch(`http://localhost:5000/api/accomodation/${id}`);
         const json = await response.json();
         if (json) {
-            setaccomodaiondetails(json);
+            setaccomodationdetails(json);
         }
       } catch (e) {
         console.log(e, "error");

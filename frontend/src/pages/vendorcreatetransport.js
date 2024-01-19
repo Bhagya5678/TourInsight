@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { Link, useNavigate } from "react-router-dom";
 
 const VendorcreateTransport = () => {
     const { vendorId } = useParams();
@@ -113,13 +114,14 @@ const VendorcreateTransport = () => {
         </div>
 
         <input type="hidden" name="vendor_id" value={vendorId} />
-
+        <Link to={`/vendor/${vendorId}`}>
         <button
           type="submit"
           className="w-full bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md"
         >
           Submit
         </button>
+        </Link>
       </form>
     </div>
   );

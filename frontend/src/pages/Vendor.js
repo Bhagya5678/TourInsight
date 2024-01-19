@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 function Vendor() {
   const [transportations, setTransportations] = useState([]);
-  const [accommodations, setAccommodations] = useState([]);
+  const [accomodations, setAccomodations] = useState([]);
   const [restaurants, setRestaurants] = useState([]);
   const {vendorId}=useParams()// Replace with the actual vendor_id
   const navigate = useNavigate();
@@ -23,10 +23,10 @@ function Vendor() {
             setTransportations(filteredTransportations);
             break;
           case 'accomodation':
-            const filteredAccommodations = data.allAccomodations.filter(
-              (accommodation) => accommodation.vendor_id === vendorId
+            const filteredAccomodations = data.allAccomodations.filter(
+              (accomodation) => accomodation.vendor_id === vendorId
             );
-            setAccommodations(filteredAccommodations);
+            setAccomodations(filteredAccomodations);
             break;
           case 'restaurants':
             const filteredRestaurants = data.allRestaurants.filter(
@@ -82,7 +82,7 @@ function Vendor() {
         ))}
       </div>
 
-      <h2 className="text-3xl font-bold mb-4 mt-8">Accommodations</h2>
+      <h2 className="text-3xl font-bold mb-4 mt-8">Accomodations</h2>
       <div className="m-4 space-x-2">
     <button
      onClick={() => navigate(`/vendorcreaterestaurant/${vendorId}`)}className=" bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded-md"
@@ -91,17 +91,17 @@ function Vendor() {
     </button>
   </div>
       <div className="flex flex-wrap">
-        {accommodations.map((accommodation) => (
-          <div key={accommodation._id} className="w-1/4 p-4">
+        {accomodations.map((accomodation) => (
+          <div key={accomodation._id} className="w-1/4 p-4">
           <div className="max-w-xs mx-auto bg-white rounded-xl overflow-hidden shadow-md">
             <img
               className="h-48 w-full object-cover object-center rounded-t-xl"
-              src={accommodation.image[0]}
-              alt={accommodation.accommodation_name}
+              src={accomodation.image[0]}
+              alt={accomodation.accomodation_name}
             />
             <div className="p-6">
-              <div className="uppercase text-base text-navy-blue font-bold">{accommodation.accommodation_name}</div>
-              <p className="mt-2 text-gray-500 text-sm">{accommodation.details}</p>
+              <div className="uppercase text-base text-navy-blue font-bold">{accomodation.accomodation_name}</div>
+              <p className="mt-2 text-gray-500 text-sm">{accomodation.details}</p>
 
             </div>
           </div>

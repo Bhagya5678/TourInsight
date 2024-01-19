@@ -3,35 +3,35 @@ import { useNavigate } from 'react-router-dom';
 import { useGlobalContext } from '../Context';
 
 function AccomodationList() {
-  const [accomodation, setAccomodation] = useState([]);
+  const [accomodations, setAccomodations] = useState([]);
   const navigate = useNavigate();
   const { location } = useGlobalContext;
 
-  const fetchData = async () => {
-    try {
-      const response = await fetch('http://localhost:5000/api/accomodation');
-      const data = await response.json();
-      setAccomodation(data.allAccomodations);
-    } catch (error) {
-      console.error('Error fetching accomodation data:', error);
-    }
-  
-  };
   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('http://localhost:5000/api/accomodation');
+        const data = await response.json();
+        setAccomodations(data.allAccomodations);
+      } catch (error) {
+        console.error('Error fetching accomodations data:', error);
+      }
+    };
+
     fetchData();
-  }, []);
+  }, []); // pass an empty array as a second argument
 
   const handleReadMoreClick = (accomodation_id) => {
     // Use the navigate function to navigate to the desired URL
     navigate(`/category/accomodation/${accomodation_id}`);
   };
-  const filteredAccomodation = accomodation.filter((accomodation) => {
+  const filteredAccomodations = accomodations.filter((accomodation) => {
     return accomodation.location === location;
   });
   
   return (
     <div className="flex flex-wrap justify-start">
-      {filteredAccomodation.map((accomodation) => (
+      {filteredAccomodations.map((accomodation) => (
         <div key={accomodation._id} className="w-1/4 p-4">
           <div className="max-w-xs mx-auto bg-white rounded-xl overflow-hidden shadow-md">
             <img
@@ -58,4 +58,3 @@ function AccomodationList() {
 }
 
 export default AccomodationList;
-
