@@ -4,14 +4,28 @@ import ProductInfo from '../Info/transportationProductInfo';
 import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 import Apps from '../Accordion/Apps';
+import { MdVerified } from "react-icons/md";
+
 
 const RestaurantFullScreen = () => {
   const [restaurantDetails, setRestaurantdetails] = useState({});
+  const [vendorDetails, setVendorDetails] = useState({});
   const { id } = useParams();
 
   useEffect(() => {
     fetchRestaurantDetails();
   }, [id]);
+
+  useEffect(() => {
+    console.log('restaurantDetails:', restaurantDetails);
+    if (restaurantDetails && restaurantDetails.vendor_id) {
+      fetchVendorDetails(restaurantDetails.vendor_id);
+    }
+  }, [restaurantDetails]);
+
+  useEffect(() => {
+    console.log('vendorDetails:', vendorDetails);
+  }, [vendorDetails]);
 
   const fetchRestaurantDetails = async () => {
     try {
@@ -25,12 +39,27 @@ const RestaurantFullScreen = () => {
     }
   };
 
+  const fetchVendorDetails = async (vendor) => {
+    try {
+      const response = await fetch(`http://localhost:5000/api/vendorname/${vendor}`);
+      const json = await response.json();
+      if (json) {
+        setVendorDetails(json);
+      }
+    } catch (e) {
+      console.log(e, "error");
+    }
+  };
+
   return (
 
     <div className="flex flex-row  rounded-2xl m-10 bg-gray-300">
 
       <div className="w-2/3 max-w-[70rem] mt-12 ml-12 mr-12 flex-1 relative">
-      <h1 className="text-center font-bold text-4xl mb-10">{restaurantDetails.restaurant_name}</h1>
+      <div className="flex items-center">
+        <h2 className="text-center font-bold text-4xl mb-2">{restaurantDetails.restaurant_name}   -   {vendorDetails.vendorName}</h2>
+        {vendorDetails.verified ? <MdVerified color='green' size={40} style={{ marginLeft: '10px' }} /> : null}
+      </div>
         {/* Conditional rendering for Carousel */}
         {restaurantDetails.image && (
           <Carousel images={restaurantDetails.image} height="50%" />
