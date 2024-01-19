@@ -49,7 +49,8 @@ router.post('/transportation', async (req, res) => {
         booked_dates,
         location,
         price,
-        reviews
+        reviews,
+        vendor_id
       } = req.body;
   
       const newTransportation = new Transportation({
@@ -59,7 +60,8 @@ router.post('/transportation', async (req, res) => {
         booked_dates,
         location,
         price,
-        reviews
+        reviews,
+        vendor_id
       });
       const savedTransportation = await newTransportation.save();
       res.status(201).json({ transportation: savedTransportation });

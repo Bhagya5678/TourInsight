@@ -40,7 +40,8 @@ router.post('/restaurants', async (req, res) => {
         booked_dates,
         location,
         price,
-        reviews
+        reviews,
+        vendor_id
       } = req.body;
   
       const newRestaurant = new Restaurant({
@@ -51,7 +52,8 @@ router.post('/restaurants', async (req, res) => {
         booked_dates,
         location,
         price,
-        reviews
+        reviews,
+        vendor_id
       });
       const savedRestaurant = await newRestaurant.save();
       res.status(201).json({ restaurant: savedRestaurant });

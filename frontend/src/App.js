@@ -27,7 +27,8 @@ import Searchbar from "./components/Searchbar";
 import Sos from "./components/SOS";
 import Vendor from "./pages/Vendor";
 import DatePicker from "./components/DatePicker";
-
+import Vendorcreatetransport from "./pages/vendorcreatetransport";
+import RestaurantForm from "./pages/vendorcreaterstaurant";
 function App() {
   
   return (
@@ -55,9 +56,9 @@ function App() {
         <Route exact path="/category/Tourist" element={<TouristList/>}/>
         <Route exact path="/category/Tourist/:id" element={<ShoppingCard />}/>
 
-        <Route exact path="/vendor/:id" element={<Vendor/>}/>
-        <Route exact path="/vendorlistings" element={<PasswordGenerator/>}/>
-
+        <Route exact path="/vendor/:vendorId" element={<Vendor/>}/>
+        <Route exact path="/vendorcreatetransport/:vendorId" element={<Vendorcreatetransport/>}/>
+        <Route exact path="/vendorcreaterestaurant/:vendorId" element={<RestaurantForm/>}/>
       </Routes>
     </Router>
     </React.StrictMode> 

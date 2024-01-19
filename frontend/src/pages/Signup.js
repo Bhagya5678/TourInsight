@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 function SignUp({
     isSignedinvar
 }) { 
-    const{user,setUserInfo,vendor,vendorInfo,setAuthInfo}=useGlobalContext();
+    const{user,setUserInfo,vendor,setVendorInfo,setAuthInfo}=useGlobalContext();
     const navigate=useNavigate();
   const [isSignedin,setisSignedin]=useState(isSignedinvar);
   const[isVendor,setVendor]=useState(false);
@@ -90,12 +90,13 @@ const handleLoginVendorSubmit=async(e)=>{
   if(json.success){
     localStorage.setItem("userEmail",data.email)
     localStorage.setItem("authToken",json.authToken)
-    setUserInfo({
+    setVendorInfo({
+      ...vendor,
       name:json.data.name,
       email:json.data.email,
       _id:json.data._id,
   });
-  navigate("/vendor");
+  navigate(`/vendor/${json.data._id}`);
   }else{
     console.log("try again");
   }
@@ -118,12 +119,13 @@ const json = await response.json()
 if(json.success){
   localStorage.setItem("userEmail",data.email)
   localStorage.setItem("authToken",json.authToken)
-  setUserInfo({
+  setVendorInfo({
+      ...vendor,
       name:json.data.name,
       email:json.data.email,
       _id:json.data._id,
   });
-  navigate("/vendor");
+  navigate(`/vendor/${json.data._id}`);
 }
 }
 const handleSubmit= (e) => {

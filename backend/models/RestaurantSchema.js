@@ -33,6 +33,10 @@ const RestaurantSchema = new Schema({
     reviews:{
         type:Array,
         required:true
+    },
+    vendor_id:{
+        type:String,
+        required:true
     }
     });
 module.exports= mongoose.model('Restaurant', RestaurantSchema);
