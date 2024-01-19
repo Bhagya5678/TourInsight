@@ -4,27 +4,52 @@ import { useParams } from 'react-router-dom';
 import { useState } from 'react';
 import ProductInfo from '../Info/AccomodationProductInfo'
 import Apps from '../Accordion/Apps';
+import { MdVerified } from "react-icons/md";
+
 
 const AccomodationCard = () => {
-  const [accomodationdetails, setAccomodtiondetails] = useState({});
-  const { id } = useParams();
-
-  useEffect(() => {
-    fetchAccomodationDetails();
-    console.log(accomodationdetails)
-  }, [id]);
-
-  const fetchAccomodationDetails = async () => {
-    try {
-      const response = await fetch(`http://localhost:5000/api/accomodation/${id}`);
-      const json = await response.json();
-      if (json) {
-        setAccomodtiondetails(json);
+    const [accomodationdetails, setaccomodaiondetails] = useState({});
+    const [vendorDetails, setVendorDetails] = useState({});
+    const { id } = useParams();
+    
+    useEffect(() => {
+      console.log('id:', id);
+      fetchAccomodationDetails();
+    }, []);
+    
+    useEffect(() => {
+      if (accomodationdetails && accomodationdetails.vendor_id) {
+        fetchVendorDetails(accomodationdetails.vendor_id);
       }
-    } catch (e) {
-      console.log(e, "error");
-    }
-  };
+    }, [accomodationdetails]);
+    
+    useEffect(() => {
+    }, [vendorDetails]);
+    
+    const fetchAccomodationDetails = async () => {
+      try {
+        const response = await fetch(`http://localhost:5000/api/accomodation/${id}`);
+        const json = await response.json();
+        if (json) {
+            setaccomodaiondetails(json);
+        }
+      } catch (e) {
+        console.log(e, "error");
+      }
+    };
+    
+    const fetchVendorDetails = async (vendor) => {
+      try {
+        const response = await fetch(`http://localhost:5000/api/vendorname/${vendor}`);
+        const json = await response.json();
+        console.log(response)
+        if (json) {
+          setVendorDetails(json);
+        }
+      } catch (e) {
+        console.log(e, "error");
+      }
+    };
 
   return (
     <>
@@ -32,7 +57,10 @@ const AccomodationCard = () => {
     <div className="flex flex-row  rounded-2xl m-10 bg-gray-300">
         
       <div className="w-2/3 max-w-[70rem] mt-12 ml-12 mr-12 flex-1 relative">
-      <h1 className="text-center font-bold text-4xl mb-10">{accomodationdetails.hotel_name}</h1>
+      <div className="flex items-center">
+        <h2 className="text-center font-bold text-4xl mb-2">{accomodationdetails.hotel_name}   -   {vendorDetails.vendorName}</h2>
+        {vendorDetails.verified ? <MdVerified color='green' size={40} style={{ marginLeft: '10px' }} /> : null}
+      </div>
         {/* Conditional rendering for Carousel */}
         {accomodationdetails.image && (
           <Carousel images={accomodationdetails.image} height="50%" />
